@@ -33,3 +33,13 @@ tail(litters_df)
 skimr:: skim(litters_df)
 ```
 
+## Options to read csv
+
+```{r}
+litters_df = read_csv("./data/FAS_litters.csv", skip = 10, col_names=FALSE)
+```
+
+Check out `"?read_csv()` for more information
+
+
+
