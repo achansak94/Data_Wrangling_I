@@ -367,14 +367,16 @@ summary {
 
 
 <pre class="r"><code>library(tidyverse)</code></pre>
-<pre><code>## ── Attaching packages ───────────────────────── tidyverse 1.3.0 ──</code></pre>
+<pre><code>## ── Attaching packages ─────────────────── tidyverse 1.3.0 ──</code></pre>
 <pre><code>## ✓ ggplot2 3.3.2     ✓ purrr   0.3.4
 ## ✓ tibble  3.0.3     ✓ dplyr   1.0.2
 ## ✓ tidyr   1.1.2     ✓ stringr 1.4.0
 ## ✓ readr   1.3.1     ✓ forcats 0.5.0</code></pre>
-<pre><code>## ── Conflicts ──────────────────────────── tidyverse_conflicts() ──
+<pre><code>## ── Conflicts ────────────────────── tidyverse_conflicts() ──
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>library(readxl)
+library(haven)</code></pre>
 <div id="read-in-some-data" class="section level2">
 <h2>Read in some data</h2>
 <p>Read in hte litters dataset.</p>
@@ -599,6 +601,54 @@ summary {
 </tr>
 </tbody>
 </table>
+</div>
+<div id="options-to-read-csv" class="section level2">
+<h2>Options to read csv</h2>
+<pre class="r"><code>litters_df = read_csv(&quot;./data/FAS_litters.csv&quot;, skip = 10, col_names=FALSE)</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   X1 = col_character(),
+##   X2 = col_character(),
+##   X3 = col_double(),
+##   X4 = col_double(),
+##   X5 = col_double(),
+##   X6 = col_double(),
+##   X7 = col_double(),
+##   X8 = col_double()
+## )</code></pre>
+<p>Check out <code>&quot;?read_csv()</code> for more information</p>
+</div>
+<div id="other-file-formats" class="section level2">
+<h2>Other file formats</h2>
+<p>Read in an excel file.</p>
+<pre class="r"><code>mlb_df = read_excel(&quot;./data/mlb11.xlsx&quot;, range = &quot;A1:F7&quot;)
+mlb_df</code></pre>
+<pre><code>## # A tibble: 6 x 6
+##   team                 runs at_bats  hits homeruns bat_avg
+##   &lt;chr&gt;               &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;
+## 1 Texas Rangers         855    5659  1599      210   0.283
+## 2 Boston Red Sox        875    5710  1600      203   0.28 
+## 3 Detroit Tigers        787    5563  1540      169   0.277
+## 4 Kansas City Royals    730    5672  1560      129   0.275
+## 5 St. Louis Cardinals   762    5532  1513      162   0.273
+## 6 New York Mets         718    5600  1477      108   0.264</code></pre>
+<p>Read in SAS file.</p>
+<pre class="r"><code>pulse_df = read_sas(&quot;./data/public_pulse_data.sas7bdat&quot;)
+pulse_df</code></pre>
+<pre><code>## # A tibble: 1,087 x 7
+##       ID   age Sex    BDIScore_BL BDIScore_01m BDIScore_06m BDIScore_12m
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;
+##  1 10003  48.0 male             7            1            2            0
+##  2 10015  72.5 male             6           NA           NA           NA
+##  3 10022  58.5 male            14            3            8           NA
+##  4 10026  72.7 male            20            6           18           16
+##  5 10035  60.4 male             4            0            1            2
+##  6 10050  84.7 male             2           10           12            8
+##  7 10078  31.3 male             4            0           NA           NA
+##  8 10088  56.9 male             5           NA            0            2
+##  9 10091  76.0 male             0            3            4            0
+## 10 10092  74.2 female          10            2           11            6
+## # … with 1,077 more rows</code></pre>
 </div>
 
 
