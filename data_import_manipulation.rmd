@@ -1,0 +1,8 @@
+---
+title: "Data Manipulation"
+output: html_document
+---
+
+```{r setup}
+library(tidyverse)
+```
