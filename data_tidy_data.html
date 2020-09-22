@@ -411,6 +411,27 @@ summary {
   relocate(id, visit) %&gt;% 
   mutate(visit = recode(visit, &quot;bl&quot;=&quot;00.&quot;))</code></pre>
 </div>
+<div id="pivot-wider" class="section level2">
+<h2><code>pivot wider</code></h2>
+<p>Make up some data!</p>
+<pre class="r"><code>analysis_result = 
+  tibble(
+    group = c(&quot;treatment&quot;,&quot;treatment&quot;, &quot;placebo&quot;,&quot;placebo&quot;),
+    time = c(&quot;pre&quot;, &quot;post&quot;, &quot;pre&quot;, &quot;post&quot;),
+    mean = c(4, 8, 3.5, 4)
+  )
+
+analysis_result %&gt;% 
+    pivot_wider(
+      names_from = &quot;time&quot;,
+      values_from = &quot;mean&quot;
+    )</code></pre>
+<pre><code>## # A tibble: 2 x 3
+##   group       pre  post
+##   &lt;chr&gt;     &lt;dbl&gt; &lt;dbl&gt;
+## 1 treatment   4       8
+## 2 placebo     3.5     4</code></pre>
+</div>
 
 
 
